@@ -13,8 +13,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
-import { AppProvider } from '@toolpad/core/AppProvider';
-import { DashboardLayout, ThemeSwitcher } from '@toolpad/core/DashboardLayout';
+import LayoutWrapper from './LayoutWrapper';
 import { Stack, Typography, IconButton, TextField, Tooltip, Chip, Box } from '@mui/material';
 import PropTypes from 'prop-types';
 
@@ -71,19 +70,7 @@ function CustomAppTitle() {
 }
 
 function AdminLayout({ children }) {
-  return (
-    <AppProvider navigation={NAVIGATION}>
-      <DashboardLayout
-        slots={{
-          appTitle: CustomAppTitle,
-          toolbarActions: ToolbarActionsSearch,
-          sidebarFooter: SidebarFooter,
-        }}
-      >
-        {children}
-      </DashboardLayout>
-    </AppProvider>
-  );
+  return <LayoutWrapper>{children}</LayoutWrapper>;
 }
 
 export default AdminLayout;

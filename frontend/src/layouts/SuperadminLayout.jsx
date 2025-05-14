@@ -1,4 +1,4 @@
-// // src/layouts/SuperadminLayout.jsx
+6// // src/layouts/SuperadminLayout.jsx
 // import React from 'react';
 // import DashboardIcon from '@mui/icons-material/Dashboard';
 // import GroupsIcon from '@mui/icons-material/Groups';
@@ -180,126 +180,259 @@
 
 // export default SuperadminLayout;
 // src/layouts/SuperadminLayout.jsx
+// import React from 'react';
+// import { Outlet, Link, useLocation } from 'react-router-dom';
+// import {
+//   Box,
+//   Drawer,
+//   AppBar,
+//   Toolbar,
+//   Typography,
+//   List,
+//   ListItem,
+//   ListItemIcon,
+//   ListItemText,
+//   IconButton,
+//   TextField,
+//   Tooltip,
+//   Chip,
+//   Stack,
+//   CssBaseline,
+// } from '@mui/material';
+
+// import DashboardIcon from '@mui/icons-material/Dashboard';
+// import GroupsIcon from '@mui/icons-material/Groups';
+// import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+// import DeleteIcon from '@mui/icons-material/Delete';
+// import DescriptionIcon from '@mui/icons-material/Description';
+// import SearchIcon from '@mui/icons-material/Search';
+// import CloudCircleIcon from '@mui/icons-material/CloudCircle';
+// import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
+// const drawerWidth = 240;
+
+// const NAVIGATION = [
+//   { to: 'dashboard', title: 'Dashboard', icon: <DashboardIcon /> },
+//   { to: 'clients', title: 'Client List', icon: <GroupsIcon /> },
+//   { to: 'add-client', title: 'Add Client', icon: <AddBusinessIcon /> },
+//   { to: 'delete-client', title: 'Delete Client', icon: <DeleteIcon /> },
+//   { to: 'reports', title: 'Reports', icon: <DescriptionIcon /> },
+// ];
+
+// function SuperadminLayout() {
+//   const location = useLocation();
+
+//   return (
+//     <Box sx={{ display: 'flex' }}>
+//       <CssBaseline />
+
+//       {/* App Bar */}
+//       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+//         <Toolbar sx={{ justifyContent: 'space-between' }}>
+//           <Stack direction="row" alignItems="center" spacing={2}>
+//             <CloudCircleIcon fontSize="large" />
+//             <Typography variant="h6" noWrap>
+//               Superadmin Panel
+//             </Typography>
+//             <Chip size="small" label="LIVE" color="success" />
+//             <Tooltip title="Secure Access">
+//               <CheckCircleIcon color="success" fontSize="small" />
+//             </Tooltip>
+//           </Stack>
+//           <Stack direction="row" alignItems="center">
+//             <Tooltip title="Search">
+//               <IconButton>
+//                 <SearchIcon />
+//               </IconButton>
+//             </Tooltip>
+//             <TextField
+//               variant="outlined"
+//               size="small"
+//               placeholder="Search"
+//               sx={{ ml: 1 }}
+//             />
+//           </Stack>
+//         </Toolbar>
+//       </AppBar>
+
+//       {/* Sidebar */}
+//       <Drawer
+//         variant="permanent"
+//         sx={{
+//           width: drawerWidth,
+//           [`& .MuiDrawer-paper`]: {
+//             width: drawerWidth,
+//             boxSizing: 'border-box',
+//           },
+//         }}
+//       >
+//         <Toolbar />
+//         <Box sx={{ overflow: 'auto' }}>
+//           <List>
+//             <Typography variant="caption" sx={{ p: 2, fontWeight: 'bold' }}>
+//               Superadmin Menu
+//             </Typography>
+//             {NAVIGATION.map((item) => (
+//               <ListItem
+//                 button
+//                 key={item.to}
+//                 component={Link}
+//                 to={`/superadmin/${item.to}`}
+//                 selected={location.pathname.includes(item.to)}
+//               >
+//                 <ListItemIcon>{item.icon}</ListItemIcon>
+//                 <ListItemText primary={item.title} />
+//               </ListItem>
+//             ))}
+//           </List>
+//           <Box sx={{ p: 2, mt: 'auto' }}>
+//             <Typography variant="caption">
+//               © {new Date().getFullYear()} HRMS Powered
+//             </Typography>
+//           </Box>
+//         </Box>
+//       </Drawer>
+
+//       {/* Main content */}
+//       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+//         <Toolbar /> {/* to offset AppBar height */}
+//         <Outlet />
+//       </Box>
+//     </Box>
+//   );
+// }
+
+// export default SuperadminLayout;
+
 import React from 'react';
-import { Outlet, Link, useLocation } from 'react-router-dom';
-import {
-  Box,
-  Drawer,
-  AppBar,
-  Toolbar,
-  Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  IconButton,
-  TextField,
-  Tooltip,
-  Chip,
-  Stack,
-  CssBaseline,
-} from '@mui/material';
+import LayoutWrapper from './LayoutWrapper';
 
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import GroupsIcon from '@mui/icons-material/Groups';
-import AddBusinessIcon from '@mui/icons-material/AddBusiness';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DescriptionIcon from '@mui/icons-material/Description';
-import SearchIcon from '@mui/icons-material/Search';
-import CloudCircleIcon from '@mui/icons-material/CloudCircle';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
-const drawerWidth = 240;
-
-const NAVIGATION = [
-  { to: 'dashboard', title: 'Dashboard', icon: <DashboardIcon /> },
-  { to: 'clients', title: 'Client List', icon: <GroupsIcon /> },
-  { to: 'add-client', title: 'Add Client', icon: <AddBusinessIcon /> },
-  { to: 'delete-client', title: 'Delete Client', icon: <DeleteIcon /> },
-  { to: 'reports', title: 'Reports', icon: <DescriptionIcon /> },
-];
-
-function SuperadminLayout() {
-  const location = useLocation();
-
-  return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-
-      {/* App Bar */}
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Stack direction="row" alignItems="center" spacing={2}>
-            <CloudCircleIcon fontSize="large" />
-            <Typography variant="h6" noWrap>
-              Superadmin Panel
-            </Typography>
-            <Chip size="small" label="LIVE" color="success" />
-            <Tooltip title="Secure Access">
-              <CheckCircleIcon color="success" fontSize="small" />
-            </Tooltip>
-          </Stack>
-          <Stack direction="row" alignItems="center">
-            <Tooltip title="Search">
-              <IconButton>
-                <SearchIcon />
-              </IconButton>
-            </Tooltip>
-            <TextField
-              variant="outlined"
-              size="small"
-              placeholder="Search"
-              sx={{ ml: 1 }}
-            />
-          </Stack>
-        </Toolbar>
-      </AppBar>
-
-      {/* Sidebar */}
-      <Drawer
-        variant="permanent"
-        sx={{
-          width: drawerWidth,
-          [`& .MuiDrawer-paper`]: {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
-      >
-        <Toolbar />
-        <Box sx={{ overflow: 'auto' }}>
-          <List>
-            <Typography variant="caption" sx={{ p: 2, fontWeight: 'bold' }}>
-              Superadmin Menu
-            </Typography>
-            {NAVIGATION.map((item) => (
-              <ListItem
-                button
-                key={item.to}
-                component={Link}
-                to={`/superadmin/${item.to}`}
-                selected={location.pathname.includes(item.to)}
-              >
-                <ListItemIcon>{item.icon}</ListItemIcon>
-                <ListItemText primary={item.title} />
-              </ListItem>
-            ))}
-          </List>
-          <Box sx={{ p: 2, mt: 'auto' }}>
-            <Typography variant="caption">
-              © {new Date().getFullYear()} HRMS Powered
-            </Typography>
-          </Box>
-        </Box>
-      </Drawer>
-
-      {/* Main content */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <Toolbar /> {/* to offset AppBar height */}
-        <Outlet />
-      </Box>
-    </Box>
-  );
+function SuperadminLayout({ children }) {
+  return <LayoutWrapper>{children}</LayoutWrapper>;
 }
 
 export default SuperadminLayout;
+
+
+
+// import React from 'react';
+// import { Outlet, Link, useLocation } from 'react-router-dom';
+// import {
+//   Box,
+//   Drawer,
+//   AppBar,
+//   Toolbar,
+//   Typography,
+//   List,
+//   ListItem,
+//   ListItemIcon,
+//   ListItemText,
+//   IconButton,
+//   TextField,
+//   Tooltip,
+//   Chip,
+//   Stack,
+//   CssBaseline,
+// } from '@mui/material';
+
+// import DashboardIcon from '@mui/icons-material/Dashboard';
+// import GroupsIcon from '@mui/icons-material/Groups';
+// import AddBusinessIcon from '@mui/icons-material/AddBusiness';
+// import DeleteIcon from '@mui/icons-material/Delete';
+// import DescriptionIcon from '@mui/icons-material/Description';
+// import SearchIcon from '@mui/icons-material/Search';
+// import CloudCircleIcon from '@mui/icons-material/CloudCircle';
+// import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+
+// const drawerWidth = 240;
+
+// const NAVIGATION = [
+//   { to: 'dashboard', title: 'Dashboard', icon: <DashboardIcon /> },
+//   { to: 'clients', title: 'Client List', icon: <GroupsIcon /> },
+//   { to: 'add-client', title: 'Add Client', icon: <AddBusinessIcon /> },
+//   { to: 'delete-client', title: 'Delete Client', icon: <DeleteIcon /> },
+//   { to: 'reports', title: 'Reports', icon: <DescriptionIcon /> },
+// ];
+
+// function SuperadminLayout() {
+//   const location = useLocation();
+
+//   return (
+//     <Box sx={{ display: 'flex' }}>
+//       <CssBaseline />
+
+//       {/* App Bar */}
+//       <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
+//         <Toolbar sx={{ justifyContent: 'space-between' }}>
+//           <Stack direction="row" alignItems="center" spacing={2}>
+//             <CloudCircleIcon fontSize="large" />
+//             <Typography variant="h6" noWrap>
+//               Superadmin Panel
+//             </Typography>
+//             <Chip size="small" label="LIVE" color="success" />
+//             <Tooltip title="Secure Access">
+//               <CheckCircleIcon color="success" fontSize="small" />
+//             </Tooltip>
+//           </Stack>
+//           <Stack direction="row" alignItems="center">
+//             <Tooltip title="Search">
+//               <IconButton>
+//                 <SearchIcon />
+//               </IconButton>
+//             </Tooltip>
+//             <TextField
+//               variant="outlined"
+//               size="small"
+//               placeholder="Search"
+//               sx={{ ml: 1 }}
+//             />
+//           </Stack>
+//         </Toolbar>
+//       </AppBar>
+
+//       {/* Sidebar */}
+//       <Drawer
+//         variant="permanent"
+//         sx={{
+//           width: drawerWidth,
+//           [`& .MuiDrawer-paper`]: {
+//             width: drawerWidth,
+//             boxSizing: 'border-box',
+//           },
+//         }}
+//       >
+//         <Toolbar />
+//         <Box sx={{ overflow: 'auto' }}>
+//           <List>
+//             <Typography variant="caption" sx={{ p: 2, fontWeight: 'bold' }}>
+//               Superadmin Menu
+//             </Typography>
+//             {NAVIGATION.map((item) => (
+//               <ListItem
+//                 button
+//                 key={item.to}
+//                 component={Link}
+//                 to={`/superadmin/${item.to}`}
+//                 selected={location.pathname.includes(item.to)}
+//               >
+//                 <ListItemIcon>{item.icon}</ListItemIcon>
+//                 <ListItemText primary={item.title} />
+//               </ListItem>
+//             ))}
+//           </List>
+//           <Box sx={{ p: 2, mt: 'auto' }}>
+//             <Typography variant="caption">
+//               © {new Date().getFullYear()} HRMS Powered
+//             </Typography>
+//           </Box>
+//         </Box>
+//       </Drawer>
+
+//       {/* Main content */}
+//       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+//         <Toolbar /> {/* to offset AppBar height */}
+//         <Outlet />
+//       </Box>
+//     </Box>
+//   );
+// }
